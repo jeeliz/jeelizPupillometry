@@ -134,6 +134,7 @@ JEEPUPILAPI.init({
         [... do something with detectState]
     } //end callbackTrack()
 });//end init call
+```
 
 
 ### Optionnal init arguments
@@ -148,15 +149,16 @@ JEEPUPILAPI.init({
    //all other settings will be useless
    //it means that you fully handle the video aspect
 
-  'deviceId'             //not set by default
-  'idealWidth': 800,  //ideal video width in pixels
-  'idealHeight': 600, //ideal video height in pixels
-  'minWidth': 480,    //min video width in pixels
-  'maxWidth': 1280,   //max video width in pixels
-  'minHeight': 480,   //min video height in pixels
-  'maxHeight': 1280   //max video height in pixels
+  'deviceId'           //not set by default
+  'idealWidth': 3264,  //ideal video width in pixels (4K)
+  'idealHeight': 2448, //ideal video height in pixels (4K)
+  'maxWidth': 7680,    //max video width in pixels (8K)
+  'maxHeight': 4320,   //max video height in pixels (8K)
+  'minWidth': 1920,    //min video width in pixels (HD)
+  'minHeight': 1080,   //min video height in pixels (HD)
 }
 ```
+
 
 ### Error codes
 The initialization function ( `callbackReady` in the code snippet ) will be called with an error code ( `errCode` ). It can have these values :
