@@ -65,14 +65,13 @@ You will need small screwdrivers and a bit of common sense to assemble everythin
 
 * The 4K (= 8MP) camera module is a *ELP-USB8MP02G-L75*. [ELP](http://www.elpcctv.com) make great and cheap camera modules, very compliant with Linux drivers. [The specifications are here](http://www.elpcctv.com/8mp-highdefinition-usb-camera-module-usb20-sony-imx179-color-cmos-sensor-75degree-lens-p-223.html) and [you can buy it on Amazon here](https://www.amazon.com/ELP-75degree-8megapixel-Webcams-Industrial/dp/B00WFQOTM2). You can plug this module directly on the USB port,
 
-* A lens for the camera, otherwise the field of view is too large (75 degrees). Here are the lens specifications : 
+* A lens for the camera, otherwise the field of view is too large (75 degrees). [You can buy it on Amazon here](https://www.amazon.com/gp/product/B00NVA96ME). Here are its specifications : 
   * Len Type: Manual Iris Lens 
   * Focal Length: 9 ~ 22mm 
   * Imager Size: 1/3" 
   * Mount Type: M12 x 0.5 
   * Aperture Range: F / 1.4 
   * M. O. D: 0.2m 
- [you can buy it on Amazon here](https://www.amazon.com/gp/product/B00NVA96ME)
 
 * A metal case to protect the camera module. [you can buy it on Aliexpress here](https://www.aliexpress.com/item/CCTV-Metal-Mini-Box-Camera-Housing-Case-For-sony-ccd-38x38-AHD-1080P-IP-Cam-PCB/32813579181.html)
 
