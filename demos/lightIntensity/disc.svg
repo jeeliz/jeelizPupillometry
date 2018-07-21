@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="140px" height="140px" viewBox="-70 -70 140 140">
+	<!-- The outer circle is mathematically existent and therefore drawn here, independent of visibility -->
+	<circle id="outercircle" cx="0" cy="0" r="70" style="fill :#7F7F7F; stroke :none;" />
+	<g style="fill:#7F7F7F; stroke:none;">
+		<circle cx="0" cy="0" r="70" />
+	</g>
+</svg>

@@ -104,6 +104,23 @@ button {
 	font-style: italic;
 	font-size: 14pt;
 }
+.experiment-point {
+	background-image: url('disc.svg');
+	color: white;
+	font-size: 14pt;
+	box-sizing: border-box;
+	padding-top: 40px;
+	position: fixed;
+	text-align: center;
+	font-weight: bold;
+	font-variant: small-caps;
+	width: 140px;
+	height: 140px;
+	margin-top: -70px;
+	margin-left: -70px;
+	left: 50%;
+	top: 50%;
+}
 
 /* RESULTS TAB */
 .results{

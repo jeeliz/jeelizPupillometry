@@ -13,7 +13,7 @@ var Experiment=(function(){
 	};
 
 	//private vars :
-	var _domButton, _domScreen, _isRunning=false, _cyclesCounter=0;
+	var _domButton, _domScreen, _isRunning=false, _cyclesCounter=0, _detectedState;
 
 	//private funcs :
 	function cycle(){
@@ -49,22 +49,28 @@ var Experiment=(function(){
 		setCSSdisplay('results-plot', 'inline-block');	
 	}
 
+	function addValue(){
+		ExperimentRecorder.addValue({
+			pupilLeftRadius: _detectedState.pupilLeftRadius,
+			pupilRightRadius: _detectedState.pupilRightRadius
+		});
+	}
+
 	function callbackTrack(detectedState){
+		_detectedState=detectedState;
+		
 		if (!_isRunning){
 			return;
 		}
 
 		var isFaceDetected=(detectedState.detected>_settings.faceDetectedThreshold);
-		if (!isFaceDetected){
+		if (0 && !isFaceDetected){
 			that.stop();
 			alert('ERROR : the face is not detected. Please take a look in the debug view. The experiment has been aborted.');
 			return;
 		}
 
-		ExperimentRecorder.addValue({
-			pupilLeftRadius: detectedState.pupilLeftRadius,
-			pupilRightRadius: detectedState.pupilRightRadius
-		});
+		addValue();
 		return;
 	}
 
@@ -107,6 +113,7 @@ var Experiment=(function(){
 			_domScreen.style.display='block';
 			_cyclesCounter=0;
 			ExperimentRecorder.start();
+			addValue(); //add the first value
 			cycle();
 		},
 

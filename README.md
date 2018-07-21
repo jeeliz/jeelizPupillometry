@@ -17,6 +17,9 @@ This library is lightweight : it captures the image of the webcam and gives the 
 * [Architecture](#architecture)
 * [Demonstrations](#demonstrations)
 * [Hardware](#hardware)
+  * [The camera](#the-camera)
+  * [The lighting](#the-lighting)
+  * [The experimental setup](#the-experimental-setup)
 * [Specifications](#specifications)
   * [Get started](#get-started)
   * [Optionnal init arguments](#optionnal-init-arguments)
@@ -63,6 +66,8 @@ We propose a setup until all laptops are equipped with 4K infrared cameras :). Y
 
 You will need small screwdrivers and a bit of common sense to assemble everything. It is easier than building some Ikea furnitures.
 
+### The camera
+
 * The 4K (= 8MP) camera module is a *ELP-USB8MP02G-L75*. [ELP](http://www.elpcctv.com) make great and cheap camera modules, very compliant with Linux drivers. [The specifications are here](http://www.elpcctv.com/8mp-highdefinition-usb-camera-module-usb20-sony-imx179-color-cmos-sensor-75degree-lens-p-223.html) and [you can buy it on Amazon here](https://www.amazon.com/ELP-75degree-8megapixel-Webcams-Industrial/dp/B00WFQOTM2). You can plug this module directly on the USB port,
 
 * A lens for the camera, otherwise the field of view is too large (75 degrees). [You can buy it on Amazon here](https://www.amazon.com/gp/product/B00NVA96ME). Here are its specifications : 
@@ -77,7 +82,47 @@ You will need small screwdrivers and a bit of common sense to assemble everythin
 
 * A support a bit heavy like a SmallRig Switching Plate Camera Easy Plate measuring SmallRig Switching Plate Camera Easy Plate : [buy it here on Amazon](https://www.amazon.com/gp/product/B00X5NXSRQ) and do not forget the screws ! [The screws are here on Amazon](https://www.amazon.com/gp/product/B01MS60KSY)
 
-Now, mount all the stuffs to get a powerful 4K infrared enabled camera. The ideal position for the device is centered horizontally, and below the head, looking up. Place it at the bottom of the screen if it is possible. Avoid to put the camera too high: it will then look down and the eyelids will mask the eyes. On contrary, if the camera is looking up, it would not be bothered by eyelids.
+Now, mount all the stuffs to get a powerful 4K infrared enabled camera :
+
+* take the camera module and remove the screws fixing the plastic lens support. After that, the CMOS captor should be naked on the electronic board [like in this picture](/images/hardware/cameraNoLens.jpg). Note : you can also directly buy the ELP camera module without the lens [(ref : ELP-USB8MP02G)](http://www.elpcctv.com/8megapixel-usb-camera-module-usb20-sony-imx179-color-cmos-sensor-p-222.html). Be very careful : DO NOT PUT YOUR FINGERS ON THE CMOS CAPTOR ! And do the operation in a dust free environment.
+
+* put the camera module into the metal case and close it using the provided screws,
+
+* screw the lens to the camera module. Screw the metal case handle. Be careful : there are short and long screws, the long are used to fix the handle.
+
+* fix the metal case handle to the cheese plate rig. The central hole is too small for the small rig screws. You can either enlarge it if you have the appropriate tool, or fixing the handle by putting 2 screws on each side to fix it.
+
+
+### The lighting
+The lights should be red because the pupils do not contract on red light. We suggest to use 2 lights, one for each eye. A grazing light from below is great because it won't make reflections on the pupil like a direct one, and the eyelids will not make shadows.
+
+* a clip light with a reflector is perfect (Bulb E26, up to 60 Watts, with a 8.5 inch aluminium reflector ). You can [buy it on Amazon here](https://www.amazon.com/Simple-Deluxe-Aluminum-Reflector-Listed/dp/B01E9IY6US),
+
+* a red bulb [like this one](https://www.amazon.com/Westinghouse-0441000-Watt-Incandescent-Light/dp/B0000BYBV0).
+
+
+### The experimental setup
+The total cost of all this hardware (camera + 2 lights) is `59.99+14.48+6+9.99+5.99+(8.99+7.04)*2 = $128.51` and most of the hardware is reusable for other projects.
+
+The ideal position for the camera is centered horizontally, and below the head, looking up. Place it at the bottom of the screen if it is possible. Avoid to put the camera too high: it will then look down and the eyelids will mask the eyes. On contrary, if the camera is looking up, it would not be bothered by eyelids.
+
+Avoid any front lighting : it makes reflections on the pupil and it disturbs the pupil radius detection algorithm. The best place is on a desktop or a table facing a wall without windows or lights on it.
+
+Fix the lights on the deskop using the clips, one a each side of the user. Then launch the demonstration provided in this repository. You start in the Debug view. This view is important for calibration and it shows the 3 levels of detection :
+* The global face detection using a neural network,
+* The iris segmentation using circle hough transform,
+* The pupil radius measurement using a custom ray tracing algorithm.
+
+Do the following operations to ajust consecutively the 3 levels of detection :
+
+* Check that the camera used is the 4K camera and not the small laptop camera,
+* Put your head in front of the computer, not too close to the camera,
+* Adjust the lens (2 settings : zoom and focus) in order to have an image not blurry (the edge border detection in red can help you to find a good setting),
+* The face image should be centered and your face should be detected,
+* Adjust the 3 first sliders about the Iris detection and segmentation. At the end the Iris should be detected and cropped correctly. The result should be stabilized,
+* Adjust the lighting (the red lights position) so that the pupil should be black, without too strong reflections, and the iris should be sufficiently illuminated to be separable from the pupil,
+* Adjust the last slider, the *Pupil detect sensitivity*. The detection of the pupil is shown by a lime circle on the iris view.
+
 
 
 ## Architecture
