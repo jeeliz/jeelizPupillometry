@@ -122,10 +122,7 @@ button {
 	top: 50%;
 }
 
-/* RESULTS TAB */
-.results{
-	
-}
+/* RAW RESULTS TAB */
 #results-plot{
 	display: none;
 	margin-top: 1em;
@@ -137,6 +134,21 @@ button {
 	font-size: 14pt;
 }
 #results-caption {
+	display: none;
+}
+
+/* AVG RESULTS TAB */
+#resultsAvg-plot{
+	display: none;
+	margin-top: 1em;
+	width: 100vw; height: 85vh;
+}
+#resultsAvg-noResults {
+	margin-top: 300px;
+	font-style: italic;
+	font-size: 14pt;
+}
+#resultsAvg-caption {
 	display: none;
 }
 

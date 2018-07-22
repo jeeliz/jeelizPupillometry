@@ -20,6 +20,7 @@ This library is lightweight : it captures the image of the webcam and gives the 
   * [The camera](#the-camera)
   * [The lighting](#the-lighting)
   * [The experimental setup](#the-experimental-setup)
+* [Experimental results](#experimental-results)
 * [Specifications](#specifications)
   * [Get started](#get-started)
   * [Optionnal init arguments](#optionnal-init-arguments)
@@ -104,7 +105,7 @@ The light should be red because the pupils do not contract on red light. A light
 
 
 ### The experimental setup
-![Experimental setup](images/setup/setup.jpg?raw=true "Title")
+![Experimental setup](images/setup/setup.jpg?raw=true "Experimental setup")
 
 The total cost of all this hardware (camera + 1 light) is `(59.99+14.48+6+9.99+5.99)+(8.99+7.04) = $112.48` and most of the hardware is reusable for other projects.
 
@@ -136,7 +137,7 @@ Do the following operations to ajust consecutively the 3 levels of detection :
   * `jeelizPupillometry.js`: main minified script,
   * `jeelizPupillometryNNC.json`: file storing the neural network parameters, loaded by the main script,
 * `/helpers/`: scripts which can help you to use this library (chart plotters, measurement recorders...),
-* `/images/` : some nice pics of good hardware,
+* `/images/` : some nice pics of good hardware, good setup and screenshots,
 * `/libs/`: 3rd party libraries
 
 
@@ -151,6 +152,13 @@ If you have not bought the required hardware yet, a screenshot video is availabl
 If you have developped an application or a demonstration using this library, we would love to see it and add a link here ! Just contact us on [Twitter @StartupJeeliz](https://twitter.com/StartupJeeliz) or [LinkedIn](https://www.linkedin.com/company/jeeliz).
 
 
+## Experimental results
+We have measured the dilatation of the pupil over 25 epochs. At each epoch the screen is black during 2000ms, then white during 2000ms. This is the first demonstration, [included in this repository here](/demos/lightIntensity/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/lightIntensity/).
+
+Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 25 epoch. Here is the result for the left and right pupils :
+![Experimental result](demo/lightIntensity/results/result_avg.png?raw=true "Experimental result")
+
+
 ## Specifications
 Here we describe how to use this library. You can take a look at the [light intensity demo](/demos/lightIntensity) to have a concrete example.
 
@@ -159,7 +167,7 @@ On your HTML page, you first need to include the main script between the tags `<
 ```html
  <script type="text/javascript" src="dist/jeelizPupillometry.js"></script>
 ```
-Then you should include a `<canvas>` HTML element in the DOM, between the tags `<body>` and `</body>`. This canvas will be used both for computations and debug rendering. The `width` and `height` properties of the canvas element should be set. They define the resolution of the canvas and the final rendering will be computed using this resolution. Be careful to not enlarge too much the canvas size using its CSS properties without increasing its resolution, otherwise it may look blurry or pixelated. We advise to fix the resolution to the actual canvas size. Do not forget to call `JEEFACEFILTERAPI.resize()` if you resize the canvas after the initialization step. We strongly encourage you to use our helper `/helpers/JeelizResizer.js` to set the width and height of the canvas (see [Optimization/Canvas and video resolutions](#optimization) section).
+Then you should include a `<canvas>` HTML element in the DOM, between the tags `<body>` and `</body>`. This canvas will be used both for computations and debug rendering. The `width` and `height` properties of the canvas element should be set. They define the resolution of the canvas and the final rendering will be computed using this resolution. Be careful to not enlarge too much the canvas size using its CSS properties without increasing its resolution, otherwise it may look blurry or pixelated. We advise to fix the resolution to the actual canvas size. Do not forget to call `JEEPUPILAPI.resize()` if you resize the canvas after the initialization step. We strongly encourage you to use our helper `/helpers/JeelizResizer.js` to set the width and height of the canvas (see [Optimization/Canvas and video resolutions](#optimization) section).
 ```html
 <canvas width="1024" height="1024" id='jeePupilCanvas'></canvas>
 ```
@@ -241,13 +249,13 @@ At each render iteration a callback function is executed ( `callbackTrack` in th
 ### Miscellaneous methods
 After the initialization (ie after that `callbackReady` is launched ) , these methods are available :
 
-* `JEEFACEFILTERAPI.resize()`: should be called after resizing the `<canvas>` element to adapt the cut of the video,
+* `JEEPUPILAPI.resize()`: should be called after resizing the `<canvas>` element to adapt the cut of the video,
 
-* `JEEFACEFILTERAPI.toggle_pause(<boolean> isPause)`: pause/resume,
+* `JEEPUPILAPI.toggle_pause(<boolean> isPause)`: pause/resume,
 
-* `JEEFACEFILTERAPI.toggle_slow(<boolean> isSlow)`: toggle the slow rendering mode: because this API consumes a lot of GPU resources, it may slow down other elements of the application. If the user opens a CSS menu for example, the CSS transitions and the DOM update can be slow. With this function you can slow down the rendering in order to relieve the GPU. Unfortunately the tracking and the 3D rendering will also be slower but this is not a problem is the user is focusing on other elements of the application. We encourage to enable the slow mode as soon as a the user's attention is focused on a different part of the canvas,
+* `JEEPUPILAPI.toggle_slow(<boolean> isSlow)`: toggle the slow rendering mode: because this API consumes a lot of GPU resources, it may slow down other elements of the application. If the user opens a CSS menu for example, the CSS transitions and the DOM update can be slow. With this function you can slow down the rendering in order to relieve the GPU. Unfortunately the tracking and the 3D rendering will also be slower but this is not a problem is the user is focusing on other elements of the application. We encourage to enable the slow mode as soon as a the user's attention is focused on a different part of the canvas,
 
-* `JEEFACEFILTERAPI.set_animateDelay(<integer> delay)`: Change the `animateDelay` (see `init()` arguments).
+* `JEEPUPILAPI.set_animateDelay(<integer> delay)`: Change the `animateDelay` (see `init()` arguments).
 
 
 
@@ -271,7 +279,7 @@ The iris are cropped and a custom ray tracing algorithm estimates the center and
 * If `WebGL2` is not available but `WebGL1`, we require either `OES_TEXTURE_FLOAT` extension or `OES_TEXTURE_HALF_FLOAT` extension,
 * If `WebGL2` is not available, and if `WebGL1` is not available or neither `OES_TEXTURE_FLOAT` or `OES_HALF_TEXTURE_FLOAT` are implemented, the user is not compatible.
 
-In all cases, WebRTC should be implemented in the web browser, otherwise FaceFilter API will not be able to get the webcam video feed. Here are the compatibility tables from [caniuse.com](https://caniuse.com/) here: [WebGL1](https://caniuse.com/#feat=webgl), [WebGL2](https://caniuse.com/#feat=webgl2), [WebRTC](https://caniuse.com/#feat=stream).
+In all cases, WebRTC should be implemented in the web browser, otherwise it won't be possible to get the webcam video feed. Here are the compatibility tables from [caniuse.com](https://caniuse.com/) here: [WebGL1](https://caniuse.com/#feat=webgl), [WebGL2](https://caniuse.com/#feat=webgl2), [WebRTC](https://caniuse.com/#feat=stream).
 
 If a compatibility error is triggered, please post an issue on this repository. If this is a problem with the webcam access, please first retry after closing all applications which could use your device (Skype, Messenger, other browser tabs and windows, ...). Please include :
 * a screenshot of [webglreport.com - WebGL1](http://webglreport.com/?v=1) (about your `WebGL1` implementation),

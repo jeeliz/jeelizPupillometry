@@ -8,8 +8,9 @@ var Experiment=(function(){
 	//experiment settings :
 	var _settings={
 		faceDetectedThreshold: 0.5, //between 0 (easy detection) and 1 (hard detection)
-		nIterations: 2,//25, //number of iterations black -> white
-		delay: 2000 //delay between 2 luminosity changes in ms
+		nIterations: 25,//25, //number of iterations black -> white
+		delay: 2000, //delay between 2 luminosity changes in ms
+		resamplePeriod: 20 //used for measures time resampling (we need to resample the time to average values). In ms
 	};
 
 	//private vars :
@@ -41,12 +42,36 @@ var Experiment=(function(){
 	}
 
 	function complete(){ //experience is complete (not aborted or canceled)
+		console.log('INFO in Experiment.js : experiment is complete :)');
+
 		that.stop();
-		ExperimentRecorder.plot();
+		ExperimentRecorder.plot(); //trace RAW RESULTS
+
+		//compute and trace AVG RESULTS :
+		var groupedValues=ExperimentRecorder.group_byEventLabels(['WHITE', 'BLACK']);
+		var avgs={};
+		['WHITE', 'BLACK'].forEach(function(groupLabel){
+			groupedValues[groupLabel]=groupedValues[groupLabel].map(function(sample){
+				ExperimentRecorder.filter_hampel(sample, 0.5, 2);
+				var sampleNormalized=ExperimentRecorder.normalize_byFirstValue(sample);
+				return ExperimentRecorder.resample(sampleNormalized, _settings.delay, _settings.resamplePeriod);
+			});
+
+			var averageValues=ExperimentRecorder.average_resampleds(groupedValues[groupLabel]);
+			avgs[groupLabel]=averageValues;
+		});
+		//plot average :
+		ExperimentRecorder.plot_averages(avgs);
+
+		//Some CSS & UI stuffs :
 		TabManager.open('tabLink-results', 'tabContent-results');
 		setCSSdisplay('results-noResults', 'none');
 		setCSSdisplay('results-caption', 'block');
 		setCSSdisplay('results-plot', 'inline-block');	
+
+		setCSSdisplay('resultsAvg-noResults', 'none');
+		setCSSdisplay('resultsAvg-caption', 'block');
+		setCSSdisplay('resultsAvg-plot', 'inline-block');	
 	}
 
 	function addValue(){

@@ -27,7 +27,8 @@
         <div class="tabLinks">
           <button class="tabLink tabLinkActive" onclick="TabManager.open(event, 'tabContent-debugView')">Debug view</button>
           <button class="tabLink" onclick="TabManager.open(event, 'tabContent-experiment')">Experiment</button>
-          <button class="tabLink" id='tabLink-results' onclick="TabManager.open(event, 'tabContent-results')">Results</button>
+          <button class="tabLink" id='tabLink-results' onclick="TabManager.open(event, 'tabContent-results')">Raw results</button>
+          <button class="tabLink" id='tabLink-resultsAvg' onclick="TabManager.open(event, 'tabContent-resultsAvg')">Averaged results</button>
           <button class="tabLink" onclick="TabManager.open(event, 'tabContent-about')">About</button>
         </div>
 
@@ -72,6 +73,15 @@
             </div>
         </div>
 
+        <div class='tabContent' style='display: none' id='tabContent-resultsAvg'>
+            <div class='results'>
+                <div id='resultsAvg-noResults'>There are no results yet. Please run and complete an experiment before</div>
+                <div id='resultsAvg-plot'></div>
+                <div id='resultsAvg-caption'>
+                </div>
+            </div>
+        </div>
+
         <div class='tabContent' style='display: none' id='tabContent-about'>
             <div class='about'>
             <p>
@@ -79,7 +89,7 @@
             </p>
 
             <p>
-            We use <a href='https://jeeliz.com'>Jeeliz</a> pupillometry to measure the radius of the pupil. The github repository of the project can ba found <a href='https://github.com/jeeliz/jeelizPupillometry'>here</a>.
+            We use <a href='https://jeeliz.com'>Jeeliz</a> pupillometry to measure the radius of the pupil. The github repository of the project can be found <a href='https://github.com/jeeliz/jeelizPupillometry'>here</a>.
             </p>
             </div>
         </div>
