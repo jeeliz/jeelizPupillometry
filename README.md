@@ -156,7 +156,7 @@ If you have developped an application or a demonstration using this library, we 
 We have measured the dilatation of the pupil over 25 epochs. At each epoch the screen is black during 2000ms, then white during 2000ms. This is the first demonstration, [included in this repository here](/demos/lightIntensity/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/lightIntensity/).
 
 Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 25 epoch. Here is the result for the left and right pupils :
-![Experimental result](demo/lightIntensity/results/result_avg.png?raw=true "Experimental result")
+![Experimental result](demos/lightIntensity/results/result_avg.png?raw=true "Experimental result")
 
 
 ## Specifications
