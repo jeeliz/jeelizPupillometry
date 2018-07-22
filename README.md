@@ -92,9 +92,11 @@ Now, mount all the stuffs to get a powerful 4K infrared enabled camera :
 
 * fix the metal case handle to the cheese plate rig. The central hole is too small for the small rig screws. You can either enlarge it if you have the appropriate tool, or fixing the handle by putting 2 screws on each side to fix it.
 
+You can found a [picture of the mounted camera here](/images/setup/camera.jpg).
+
 
 ### The lighting
-The lights should be red because the pupils do not contract on red light. We suggest to use 2 lights, one for each eye. A grazing light from below is great because it won't make reflections on the pupil like a direct one, and the eyelids will not make shadows.
+The light should be red because the pupils do not contract on red light. A light from below is great because it won't make reflections on the pupil like a direct one, and the eyelids will not make shadows.
 
 * a clip light with a reflector is perfect (Bulb E26, up to 60 Watts, with a 8.5 inch aluminium reflector ). You can [buy it on Amazon here](https://www.amazon.com/Simple-Deluxe-Aluminum-Reflector-Listed/dp/B01E9IY6US),
 
@@ -102,7 +104,9 @@ The lights should be red because the pupils do not contract on red light. We sug
 
 
 ### The experimental setup
-The total cost of all this hardware (camera + 2 lights) is `59.99+14.48+6+9.99+5.99+(8.99+7.04)*2 = $128.51` and most of the hardware is reusable for other projects.
+![Experimental setup](images/setup/setup.jpg?raw=true "Title")
+
+The total cost of all this hardware (camera + 1 light) is `(59.99+14.48+6+9.99+5.99)+(8.99+7.04) = $112.48` and most of the hardware is reusable for other projects.
 
 The ideal position for the camera is centered horizontally, and below the head, looking up. Place it at the bottom of the screen if it is possible. Avoid to put the camera too high: it will then look down and the eyelids will mask the eyes. On contrary, if the camera is looking up, it would not be bothered by eyelids.
 
@@ -120,7 +124,7 @@ Do the following operations to ajust consecutively the 3 levels of detection :
 * Adjust the lens (2 settings : zoom and focus) in order to have an image not blurry (the edge border detection in red can help you to find a good setting),
 * The face image should be centered and your face should be detected,
 * Adjust the 3 first sliders about the Iris detection and segmentation. At the end the Iris should be detected and cropped correctly. The result should be stabilized,
-* Adjust the lighting (the red lights position) so that the pupil should be black, without too strong reflections, and the iris should be sufficiently illuminated to be separable from the pupil,
+* Adjust the lighting (the red lights position) so that the pupil should be black, without too strong reflections, and the iris should be sufficiently illuminated to be separable from the pupil. You can also play with the camera settings (with Linux/Debian, launch `v4l2ucp /dev/video1` and replace automatic exposure with manual one. [This a screenshot of our settings](/images/screenshots/v4l2ucp.png)),
 * Adjust the last slider, the *Pupil detect sensitivity*. The detection of the pupil is shown by a lime circle on the iris view.
 
 
