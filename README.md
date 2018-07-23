@@ -326,4 +326,6 @@ If you want to use this library for glasses virtual try-on (sunglasses, spectacl
 
 ## References
 * [Jeeliz official website](https://jeeliz.com)
+* [Snowden RJ, O’Farrell KR, Burley D, Erichsen JT, Newton NV, Gray NS. The pupil’s response to affective pictures: Role of image duration, habituation, and viewing mode. Psychophysiology. 2016;53(8):1217-1223. doi:10.1111/psyp.12668.](doc/calmOrFear.pdf)
+* [Is the low-cost EyeTribe eye tracker any good for research?, Edwin S. Dalmaijer, Department of Experimental Psychology, University of Oxford, Oxford, United Kingdom, 2014](doc/eyetribeReview.pdf)
 * [Webgl Academy: tutorials about WebGL and THREE.JS](http://www.webglacademy.com)
