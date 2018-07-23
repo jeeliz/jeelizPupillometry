@@ -174,6 +174,9 @@ We have measured the dilatation of the pupil over 5 epochs. At each epoch a quie
 
 ![Calm of fear experimental result](demos/warPeace/results/result_avg.png?raw=true "Calm of fear experimental result")
 
+This result was previously observed in [Snowden RJ, O’Farrell KR, Burley D, Erichsen JT, Newton NV, Gray NS. The pupil’s response to affective pictures: Role of image duration, habituation, and viewing mode. Psychophysiology. 2016;53(8):1217-1223. doi:10.1111/psyp.12668.](doc/calmOrFear.pdf) : The pupil dilates when we feel fear.
+
+
 ## Specifications
 Here we describe how to use this library. You can take a look at the [light intensity demo](/demos/lightIntensity) to have a concrete example.
 
