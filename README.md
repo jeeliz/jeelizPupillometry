@@ -21,6 +21,8 @@ This library is lightweight : it captures the image of the webcam and gives the 
   * [The lighting](#the-lighting)
   * [The experimental setup](#the-experimental-setup)
 * [Experimental results](#experimental-results)
+  * [Light intensity](#light-intensity)
+  * [Calm or fear](#calm-or-fear)
 * [Specifications](#specifications)
   * [Get started](#get-started)
   * [Optionnal init arguments](#optionnal-init-arguments)
@@ -63,7 +65,7 @@ We strongly advise to use this library with a desktop or a laptop computer with 
 
 Then we need a very high resolution camera, typically an 4K camera. Indeed, should be able to measure the pupil with a significant amount of pixels. Videoconferencing 4K cameras are not fitted for this purpose because their field of view is too large. We use a 4K CCTV camera with a custom adjustable lens to reduce the field of view. This solution is cheaper, and most CCTV cameras have a big advantage in our case : they does not have a filter to block the infrared and the pupil is more separable from the iris in the infrared field.
 
-We propose a setup until all laptops are equipped with 4K infrared cameras :). You can buy all the parts for less than $100 and we expect a decrease in the price of 4K cameras. It is far cheaper than specialized pupillometry devices (some are over $20000). If you succeed in running this library with a lighter setup, we are very interested to add the information here!
+We propose a setup until all laptops are equipped with 4K infrared cameras :). You can buy all the parts for about $100 and we expect a decrease in the price of 4K cameras. It is far cheaper than specialized pupillometry devices (some are over $20000). If you succeed in running this library with a lighter setup, we are very interested to add the information here!
 
 You will need small screwdrivers and a bit of common sense to assemble everything. It is easier than building some Ikea furnitures.
 
@@ -128,6 +130,7 @@ Do the following operations to ajust consecutively the 3 levels of detection :
 * Adjust the lighting (the red lights position) so that the pupil should be black, without too strong reflections, and the iris should be sufficiently illuminated to be separable from the pupil. You can also play with the camera settings (with Linux/Debian, launch `v4l2ucp /dev/video1` and replace automatic exposure with manual one. [This a screenshot of our settings](/images/screenshots/v4l2ucp.png)),
 * Adjust the last slider, the *Pupil detect sensitivity*. The detection of the pupil is shown by a lime circle on the iris view.
 
+The detection works better without wearing glasses. If you still have to wear it, they should be very clean in order to not disturb the pupil detection.
 
 
 ## Architecture
@@ -147,17 +150,29 @@ You can test it with these demos (all included in this repository in the `/demos
 
 * [measure the dilation of the pupil by varying the luminous intensity of the screen](https://jeeliz.com/demos/pupillometry/demos/lightIntensity/)
 
+* [measure the dilatation of the pupil when looking alternately images inspiring peace or fear](https://jeeliz.com/demos/pupillometry/demos/warPeace/)
+
+
 If you have not bought the required hardware yet, a screenshot video is available [on Youtube](https://youtu.be/jQkaJoMGinQ). You can also subscribe to the [Jeeliz Youtube channel](https://www.youtube.com/channel/UC3XmXH1T3d1XFyOhrRiiUeA) or to the [@StartupJeeliz Twitter account](https://twitter.com/StartupJeeliz) to be kept informed of our cutting edge developments.
 
 If you have developped an application or a demonstration using this library, we would love to see it and add a link here ! Just contact us on [Twitter @StartupJeeliz](https://twitter.com/StartupJeeliz) or [LinkedIn](https://www.linkedin.com/company/jeeliz).
 
 
 ## Experimental results
+
+### Light intensity
 We have measured the dilatation of the pupil over 25 epochs. At each epoch the screen is black during 2000ms, then white during 2000ms. This is the first demonstration, [included in this repository here](/demos/lightIntensity/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/lightIntensity/).
 
 Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 25 epoch. Here is the result for the left and right pupils :
-![Experimental result](demos/lightIntensity/results/result_avg.png?raw=true "Experimental result")
+![Light intensity experimental result](demos/lightIntensity/results/result_avg.png?raw=true "Light intensity experimental result")
 
+The pupil dilates (its radius increases) when the luminosity decreases.
+
+
+### Calm or fear
+We have measured the dilatation of the pupil over 5 epochs. At each epoch a quiet, peaceful image (a desert beach, or a beautiful landscape...) is shown during 4000ms, then an image inspiring fear is shown during the same duration (a war or a riot picture for example).
+
+![Calm of fear experimental result](demos/warPeace/results/result_avg.png?raw=true "Calm of fear experimental result")
 
 ## Specifications
 Here we describe how to use this library. You can take a look at the [light intensity demo](/demos/lightIntensity) to have a concrete example.
