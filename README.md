@@ -163,14 +163,16 @@ If you have developped an application or a demonstration using this library, we 
 ### Light intensity
 We have measured the dilatation of the pupil over 25 epochs. At each epoch the screen is black during 2000ms, then white during 2000ms. This is the first demonstration, [included in this repository here](/demos/lightIntensity/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/lightIntensity/).
 
-Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 25 epoch. Here is the result for the left and right pupils :
+Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 25 epochs. Here is the result for the left and right pupils :
 ![Light intensity experimental result](demos/lightIntensity/results/result_avg.png?raw=true "Light intensity experimental result")
 
 The pupil dilates (its radius increases) when the luminosity decreases.
 
 
 ### Calm or fear
-We have measured the dilatation of the pupil over 5 epochs. At each epoch a quiet, peaceful image (a desert beach, or a beautiful landscape...) is shown during 4000ms, then an image inspiring fear is shown during the same duration (a war or a riot picture for example).
+We have measured the dilatation of the pupil over 5 epochs. At each epoch a quiet, peaceful image (a desert beach, or a beautiful landscape...) is shown during 4000ms, then an image inspiring fear is shown during the same duration (a war or a riot picture for example). This demo is [included in this repository here](/demos/warPeace/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/warPeace/).
+
+Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 5 epochs. Here is the result for the left and right pupils :
 
 ![Calm of fear experimental result](demos/warPeace/results/result_avg.png?raw=true "Calm of fear experimental result")
 
