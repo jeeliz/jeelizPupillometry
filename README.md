@@ -152,7 +152,13 @@ You can test it with these demos (all included in this repository in the `/demos
 
 * [measure the dilatation of the pupil when looking alternately images inspiring peace or fear](https://jeeliz.com/demos/pupillometry/demos/warPeace/)
 
-If you have not bought the required hardware yet, a screenshot video is available [on Youtube](https://youtu.be/e0f4fsjrcSg). You can also subscribe to the [Jeeliz Youtube channel](https://www.youtube.com/channel/UC3XmXH1T3d1XFyOhrRiiUeA) or to the [@StartupJeeliz Twitter account](https://twitter.com/StartupJeeliz) to be kept informed of our cutting edge developments.
+If you have not bought the required hardware yet, a screenshot video is available [on Youtube](https://youtu.be/e0f4fsjrcSg):
+<p align="center">
+<a href='https://youtu.be/e0f4fsjrcSg'><img src='images/screenshots/youtubeFrame.png?raw=true'></a>
+</p>
+
+
+You can also subscribe to the [Jeeliz Youtube channel](https://www.youtube.com/channel/UC3XmXH1T3d1XFyOhrRiiUeA) or to the [@StartupJeeliz Twitter account](https://twitter.com/StartupJeeliz) to be kept informed of our cutting edge developments.
 
 If you have developped an application or a demonstration using this library, we would love to see it and add a link here ! Just contact us on [Twitter @StartupJeeliz](https://twitter.com/StartupJeeliz) or [LinkedIn](https://www.linkedin.com/company/jeeliz).
 
