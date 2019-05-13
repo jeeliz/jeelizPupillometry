@@ -16,6 +16,7 @@ This library is lightweight : it captures the image of the webcam and gives the 
 * [Features](#features)
 * [Architecture](#architecture)
 * [Demonstrations](#demonstrations)
+* [Sliders usage](#sliders-usage)
 * [Hardware](#hardware)
   * [The camera](#the-camera)
   * [The lighting](#the-lighting)
@@ -163,6 +164,20 @@ You can also subscribe to the [Jeeliz Youtube channel](https://www.youtube.com/c
 If you have developped an application or a demonstration using this library, we would love to see it and add a link here ! Just contact us on [Twitter @StartupJeeliz](https://twitter.com/StartupJeeliz) or [LinkedIn](https://www.linkedin.com/company/jeeliz).
 
 
+## Sliders usage
+In the demonstrations provided with this repository, 4 sliders allows to improve the pupil detection and measurement:
+* **Iris edge border size**: To crop the iris, we first compute the borders using a Sobel filter and a thresholding, then we apply Circle Hough Transform to get the iris position and radius. The edges are displayed in red in the debug view. This slider controls the characteristic distance of the edge detection. If it is too small, the border will be very thin and dashed and the iris detection won't be stable. If it is too thick, the iris detection will be stable but not accurate enough,
+
+* **Iris border thresholding**: To crop the iris, we compute the borders using a Sobel filter, then a thresholding. This slider controls the threshold value.
+
+* **Iris roundness (a/b)**: The Iris is detected using a Circle Hough Transform. If the camera was in the view axis, the iris would always be a circle. But in our setup, the camera is offset from the view axis, so the iris is seen as an ellipse. We have modified the Circle Hough Transform in order to take account of this distorsion. This parameter is the ratio between the longer and the shorter axis of the ellipse (it should be `1` for a circle). To tune it, you need to look at the green circle on the 2 top views of the debug display. This green circle should match with the iris shape.
+
+* **Pupil detect sensitivity**: The pupil radius is computed using a ray marching algorithm. Each ray starts from each pixels of the center of the iris, and as soon as it encounters a lighter color, it stops. This slider controls the stopping value. You should tune by looking at the green circles in the bottom left view: each green circle should match the pupil.
+
+
+First, you have to adjust **Iris edge border size** and **Iris border thresholding** to have a good iris detection and cropping. In the debug view, the iris should be surrounded by a red border, not too thin nor too thick. Then, you should adjust **Iris roundness (a/b)** to make the green circle match with the iris. After that, the iris should be correctly cropped. Finally, you need to tune the **Pupil detect sensitivity** to make the smaller green circles match with the pupils.
+
+
 ## Experimental results
 
 ### Light intensity
@@ -192,7 +207,7 @@ On your HTML page, you first need to include the main script between the tags `<
 ```html
  <script type="text/javascript" src="dist/jeelizPupillometry.js"></script>
 ```
-Then you should include a `<canvas>` HTML element in the DOM, between the tags `<body>` and `</body>`. This canvas will be used both for computations and debug rendering. The `width` and `height` properties of the canvas element should be set. They define the resolution of the canvas and the final rendering will be computed using this resolution. Be careful to not enlarge too much the canvas size using its CSS properties without increasing its resolution, otherwise it may look blurry or pixelated. We advise to fix the resolution to the actual canvas size. Do not forget to call `JEEPUPILAPI.resize()` if you resize the canvas after the initialization step. We strongly encourage you to use our helper `/helpers/JeelizResizer.js` to set the width and height of the canvas (see [Optimization/Canvas and video resolutions](#optimization) section).
+Then you should include a `<canvas>` HTML element in the DOM, between the tags `<body>` and `</body>`. This canvas will be used both for computations and debug rendering. The `width` and `height` properties of the canvas element should be set. They define the resolution of the canvas and the final rendering will be computed using this resolution. Be careful to not enlarge too much the canvas size using its CSS properties without increasing its resolution, otherwise it may look blurry or pixelated. We advise to fix the resolution to the actual canvas size. Do not forget to call `JEEPUPILAPI.resize()` if you resize the canvas after the initialization step.
 ```html
 <canvas width="1024" height="1024" id='jeePupilCanvas'></canvas>
 ```
