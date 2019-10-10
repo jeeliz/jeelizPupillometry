@@ -4,9 +4,9 @@
 This script encodes the experiement
 */ 
 
-var Experiment=(function(){
+var Experiment = (function(){
 	//experiment settings :
-	var _settings={
+	const _settings = {
 		faceDetectedThreshold: -0.5, //between 0 (easy detection) and 1 (hard detection)
 		nIterations: 5, //number of iterations peace picture -> war picture
 		delay: 4000, //delay before changing a picture
@@ -19,17 +19,17 @@ var Experiment=(function(){
 	//private funcs :
 	function cycle(){
 		if (!_isRunning) return;
-		if (_cyclesCounter===2*_settings.nIterations){ //experience is over
+		if (_cyclesCounter === 2*_settings.nIterations){ //experience is over
 			complete();
 			return;
 		}
 
-		var iImage=Math.floor(_cyclesCounter/2).toString();
+		const iImage = Math.floor(_cyclesCounter/2).toString();
 		if (_cyclesCounter%2===0){ //black screen
-			_domScreen.style.backgroundImage="url('images/peace"+iImage+".jpg')";
+			_domScreen.style.backgroundImage = "url('images/peace" + iImage + ".jpg')";
 			ExperimentRecorder.addEvent('PEACE');
 		} else { //white screen
-			_domScreen.style.backgroundImage="url('images/war"+iImage+".jpg')";;
+			_domScreen.style.backgroundImage = "url('images/war" + iImage + ".jpg')";;
 			ExperimentRecorder.addEvent('WAR');
 		}
 
@@ -38,7 +38,7 @@ var Experiment=(function(){
 	}
 
 	function setCSSdisplay(domId, val){
-		var domElt=document.getElementById(domId);
+		const domElt = document.getElementById(domId);
 		domElt.style.display=val;
 	}
 
@@ -49,17 +49,17 @@ var Experiment=(function(){
 		ExperimentRecorder.plot(); //trace RAW RESULTS
 
 		//compute and trace AVG RESULTS :
-		var groupedValues=ExperimentRecorder.group_byEventLabels(['PEACE', 'WAR']);
-		var avgs={};
+		const groupedValues = ExperimentRecorder.group_byEventLabels(['PEACE', 'WAR']);
+		const avgs = {};
 		['PEACE', 'WAR'].forEach(function(groupLabel){
-			groupedValues[groupLabel]=groupedValues[groupLabel].map(function(sample){
+			groupedValues[groupLabel] = groupedValues[groupLabel].map(function(sample){
 				ExperimentRecorder.filter_hampel(sample, 0.5, 2);
-				var sampleNormalized=ExperimentRecorder.normalize_byFirstValue(sample);
+				const sampleNormalized = ExperimentRecorder.normalize_byFirstValue(sample);
 				return ExperimentRecorder.resample(sampleNormalized, _settings.delay, _settings.resamplePeriod);
 			});
 
-			var averageValues=ExperimentRecorder.average_resampleds(groupedValues[groupLabel]);
-			avgs[groupLabel]=averageValues;
+			const averageValues = ExperimentRecorder.average_resampleds(groupedValues[groupLabel]);
+			avgs[groupLabel] = averageValues;
 		});
 		//plot average :
 		ExperimentRecorder.plot_averages(avgs);
@@ -83,13 +83,13 @@ var Experiment=(function(){
 	}
 
 	function callbackTrack(detectedState){
-		_detectedState=detectedState;
+		_detectedState = detectedState;
 		
 		if (!_isRunning){
 			return;
 		}
 
-		var isFaceDetected=(detectedState.detected>_settings.faceDetectedThreshold);
+		const isFaceDetected = (detectedState.detected>_settings.faceDetectedThreshold);
 		if (0 && !isFaceDetected){
 			that.stop();
 			alert('ERROR : the face is not detected. Please take a look in the debug view. The experiment has been aborted.');
@@ -101,24 +101,24 @@ var Experiment=(function(){
 	}
 
 	//public methods :
-	var that = {
+	const that = {
 		init: function(){ //entry point. Called by body onload method
 			//initialize Jeeliz pupillometry :
 			JEEPUPILAPI.init({
-                canvasId: 'jeePupilCanvas',
-                NNCpath: '../../dist/',
-                callbackReady: function(err){
-                    if (err){
-                        console.log('AN ERROR HAPPENS. ERR =', err);
-                        return;
-                    }
+        canvasId: 'jeePupilCanvas',
+        NNCpath: '../../dist/',
+        callbackReady: function(err){
+          if (err){
+            console.log('AN ERROR HAPPENS. ERR =', err);
+            return;
+          }
 
-                    console.log('INFO : JEEPUPILAPI IS READY');
-                },
-                callbackTrack: callbackTrack
-            });
-			_domButton=document.getElementById('experiment-stopStartButton');
-			_domScreen=document.getElementById('experiment-screen');
+          console.log('INFO : JEEPUPILAPI IS READY');
+        },
+        callbackTrack: callbackTrack
+      });
+			_domButton = document.getElementById('experiment-stopStartButton');
+			_domScreen = document.getElementById('experiment-screen');
 		},
 
 		toggle: function(){
@@ -134,10 +134,10 @@ var Experiment=(function(){
 				console.log('WARNING in Experiment.js - start() : the experiment is running. Stop it before running this method.');
 				return;
 			}
-			_isRunning=true;
-			_domButton.innerHTML='STOP THE EXPERIMENT';
-			_domScreen.style.display='block';
-			_cyclesCounter=0;
+			_isRunning = true;
+			_domButton.innerHTML = 'STOP THE EXPERIMENT';
+			_domScreen.style.display = 'block';
+			_cyclesCounter = 0;
 			ExperimentRecorder.start();
 			addValue(); //add the first value
 			cycle();
@@ -148,9 +148,9 @@ var Experiment=(function(){
 				console.log('WARNING in Experiment.js - stop() : the experiment is not running. Start it before running this method.');
 				return;
 			}
-			_isRunning=false;
-			_domButton.innerHTML='START THE EXPERIMENT';
-			_domScreen.style.display='none';
+			_isRunning = false;
+			_domButton.innerHTML = 'START THE EXPERIMENT';
+			_domScreen.style.display = 'none';
 			ExperimentRecorder.end();
 		}
 	} //end that

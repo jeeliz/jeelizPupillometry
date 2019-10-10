@@ -2,148 +2,148 @@
 a {color: #adf; text-decoration: none}
 a:hover {color: white;}
 body {overflow: auto; overflow-y: auto; background-color: #000; color: #eee;
-	font-family: 'Open Sans', sans-serif;
-	margin: 0px; text-align: center; width: 100%;}
+  font-family: 'Open Sans', sans-serif;
+  margin: 0px; text-align: center; width: 100%;}
 button {
-	color: #eee;
-	cursor: pointer;
+  color: #eee;
+  cursor: pointer;
 }
 
 
 /* TAB MANAGER : */
 .tabLinks {
-	overflow: hidden;
-    background-color: #666;
+  overflow: hidden;
+  background-color: #666;
 }
 .tabLink {
-	float: left;
-    border: none;
-    outline: none;
-    padding: 14px 16px;
-    transition: 0.2s;
-    background-color: #333;
-    border-bottom: 1px solid #ccc;
+  float: left;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  transition: 0.2s;
+  background-color: #333;
+  border-bottom: 1px solid #ccc;
 }
 .tabLinks button:hover {
-	color: #fff;
-    background-color: #666;
+  color: #fff;
+  background-color: #666;
 }
 .tabLinkActive:hover {
-	color: #eee!important;
-    background-color: #000!important;
+  color: #eee!important;
+  background-color: #000!important;
 }
 .tabLinkActive {
-	 background-color: #000;
-	 border-bottom: 1px solid #000;
-	 border-top: 1px solid #ccc;
-	 border-left: 1px solid #ccc;
-	 border-right: 1px solid #ccc;
+   background-color: #000;
+   border-bottom: 1px solid #000;
+   border-top: 1px solid #ccc;
+   border-left: 1px solid #ccc;
+   border-right: 1px solid #ccc;
 }
 .tabContent {
-	animation: fadeEffect 500ms;
+  animation: fadeEffect 500ms;
 }
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 /* DEBUG VIEW TAB : */
 #jeePupilCanvas {
-    display: inline-block;
-    margin-top: 10px;
-    max-width: calc(100vw - 70px);
-    max-height: calc(100vh - 70px);
-    border: 1px solid white;
+  display: inline-block;
+  margin-top: 10px;
+  max-width: calc(100vw - 70px);
+  max-height: calc(100vh - 70px);
+  border: 1px solid white;
 }
 .jeePupilControls {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    width: 360px;
-    text-align: left;
-    border: 1px solid white;
-    padding: 10px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  width: 360px;
+  text-align: left;
+  border: 1px solid white;
+  padding: 10px;
 }
 .jeePupilControls label {
-    width: 200px;
-    float: left;
-    clear: both;
+  width: 200px;
+  float: left;
+  clear: both;
 }
 .jeePupilControls input {
-    cursor: pointer;
+  cursor: pointer;
 } 
 
 
 /* EXPERIMENT TAB :*/
 #experiment-stopStartButton{
-	background-color: black;
-	padding: 16px;
-	position: fixed;
-	z-index: 3;
-	left: 20px;
-	bottom: 20px;
-	border: 1px solid white;
+  background-color: black;
+  padding: 16px;
+  position: fixed;
+  z-index: 3;
+  left: 20px;
+  bottom: 20px;
+  border: 1px solid white;
 }
 #experiment-stopStartButton:hover{
-	color: #fff;
-	background-color: #333;
+  color: #fff;
+  background-color: #333;
 }
 #experiment-screen {
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-color: black;
-	background-position: center center;
-	position: fixed;
-	z-index: 2;
-	top: 0px; left: 0px;
-	width: 100vw;
-	height: 100vh;
-	display: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: black;
+  background-position: center center;
+  position: fixed;
+  z-index: 2;
+  top: 0px; left: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: none;
 }
 .experiment-notice {
-	text-align: center;
-	margin-top: 300px;
-	font-style: italic;
-	font-size: 14pt;
+  text-align: center;
+  margin-top: 300px;
+  font-style: italic;
+  font-size: 14pt;
 }
 
 /* RAW RESULTS TAB */
 #results-plot{
-	display: none;
-	margin-top: 1em;
-	width: 100vw; height: 85vh;
+  display: none;
+  margin-top: 1em;
+  width: 100vw; height: 85vh;
 }
 #results-noResults {
-	margin-top: 300px;
-	font-style: italic;
-	font-size: 14pt;
+  margin-top: 300px;
+  font-style: italic;
+  font-size: 14pt;
 }
 #results-caption {
-	display: none;
+  display: none;
 }
 
 /* AVG RESULTS TAB */
 #resultsAvg-plot{
-	display: none;
-	margin-top: 1em;
-	width: 100vw; height: 85vh;
+  display: none;
+  margin-top: 1em;
+  width: 100vw; height: 85vh;
 }
 #resultsAvg-noResults {
-	margin-top: 300px;
-	font-style: italic;
-	font-size: 14pt;
+  margin-top: 300px;
+  font-style: italic;
+  font-size: 14pt;
 }
 #resultsAvg-caption {
-	display: none;
+  display: none;
 }
 
 /* ABOUT TAB */
 .about {
-	margin-top: 100px;
-	text-align: justify;
-	max-width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+  margin-top: 100px;
+  text-align: justify;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }

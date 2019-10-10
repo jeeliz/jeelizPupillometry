@@ -13,31 +13,31 @@ button {
 /* TAB MANAGER : */
 .tabLinks {
 	overflow: hidden;
-    background-color: #666;
+  background-color: #666;
 }
 .tabLink {
 	float: left;
-    border: none;
-    outline: none;
-    padding: 14px 16px;
-    transition: 0.2s;
-    background-color: #333;
-    border-bottom: 1px solid #ccc;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  transition: 0.2s;
+  background-color: #333;
+  border-bottom: 1px solid #ccc;
 }
 .tabLinks button:hover {
 	color: #fff;
-    background-color: #666;
+  background-color: #666;
 }
 .tabLinkActive:hover {
 	color: #eee!important;
-    background-color: #000!important;
+  background-color: #000!important;
 }
 .tabLinkActive {
-	 background-color: #000;
-	 border-bottom: 1px solid #000;
-	 border-top: 1px solid #ccc;
-	 border-left: 1px solid #ccc;
-	 border-right: 1px solid #ccc;
+  background-color: #000;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 .tabContent {
 	animation: fadeEffect 500ms;
@@ -50,29 +50,29 @@ button {
 
 /* DEBUG VIEW TAB : */
 #jeePupilCanvas {
-    display: inline-block;
-    margin-top: 10px;
-    max-width: calc(100vw - 70px);
-    max-height: calc(100vh - 70px);
-    border: 1px solid white;
+  display: inline-block;
+  margin-top: 10px;
+  max-width: calc(100vw - 70px);
+  max-height: calc(100vh - 70px);
+  border: 1px solid white;
 }
 .jeePupilControls {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    width: 360px;
-    text-align: left;
-    border: 1px solid white;
-    padding: 10px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  width: 360px;
+  text-align: left;
+  border: 1px solid white;
+  padding: 10px;
 }
 .jeePupilControls label {
-    width: 200px;
-    float: left;
-    clear: both;
+  width: 200px;
+  float: left;
+  clear: both;
 }
 .jeePupilControls input {
-    cursor: pointer;
+  cursor: pointer;
 } 
 
 
