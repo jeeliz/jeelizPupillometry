@@ -96,24 +96,25 @@ var ExperimentRecorder = (function(){
 
       // sort values by event type
       let lastEvent = null, currentGroup =  null;
+
       _record.forEach(function(rec){
         if (rec.type==='EVENT'){
           const eventIndex = eventLabels.indexOf(rec.label);
           if (eventIndex!==-1){ // this event is taken into account by the grouping
-            if (currentGroup!==false && currentGroup.length){ // first save previous session
+            if (currentGroup!==null && currentGroup.length){ // first save previous session
               result[lastEvent.label].push(currentGroup);
             }
             currentGroup = [];
             lastEvent = rec;
           }
-        } else if (currentGroup!==false && rec.type==='VAL'){
+        } else if (currentGroup!==null && rec.type==='VAL'){
           const recCloned = cloneRec(rec);
           recCloned.ts -= lastEvent.ts;
           currentGroup.push(recCloned);
         }
       }); //end loop on records
 
-      if (currentGroup!==false && currentGroup.length){
+      if (currentGroup!==null && currentGroup.length){
         result[lastEvent.label].push(currentGroup);
       }
 
