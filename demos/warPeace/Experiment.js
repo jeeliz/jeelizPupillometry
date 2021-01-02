@@ -2,7 +2,7 @@
 
 /*
 This script encodes the experiement
-*/ 
+*/
 
 var Experiment = (function(){
   // experiment settings:
@@ -14,7 +14,7 @@ var Experiment = (function(){
   };
 
   // private vars:
-  let _domButton = null, _domScreen = null,
+  let _domButton = null, _domScreen = null;
   let _isRunning = false, _cyclesCounter = 0, _detectedState = null;
 
   // private funcs:
@@ -69,11 +69,11 @@ var Experiment = (function(){
     TabManager.open('tabLink-results', 'tabContent-results');
     setCSSdisplay('results-noResults', 'none');
     setCSSdisplay('results-caption', 'block');
-    setCSSdisplay('results-plot', 'inline-block');  
+    setCSSdisplay('results-plot', 'inline-block');
 
     setCSSdisplay('resultsAvg-noResults', 'none');
     setCSSdisplay('resultsAvg-caption', 'block');
-    setCSSdisplay('resultsAvg-plot', 'inline-block');  
+    setCSSdisplay('resultsAvg-plot', 'inline-block');
   }
 
   function addValue(){
@@ -85,7 +85,7 @@ var Experiment = (function(){
 
   function callbackTrack(detectedState){
     _detectedState = detectedState;
-    
+
     if (!_isRunning){
       return;
     }
