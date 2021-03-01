@@ -106,7 +106,7 @@ var Experiment = (function(){
       // initialize Jeeliz pupillometry:
       JEEPUPILAPI.init({
         canvasId: 'jeePupilCanvas',
-        NNCpath: '../../dist/',
+        NNCPath: '../../dist/',
         callbackReady: function(err){
           if (err){
               console.log('AN ERROR HAPPENS. ERR =', err);

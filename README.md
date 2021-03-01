@@ -215,7 +215,7 @@ When your page is loaded you should launch this function :
 ```javascript
 JEEPUPILAPI.init({
     canvasId: 'jeePupilCanvas',
-    NNCpath: '../../../dist/', //path to JSON neural network model (jeelizPupillometryNNC.json by default)
+    NNCPath: '../../../dist/', //path to JSON neural network model (jeelizPupillometryNNC.json by default)
     callbackReady: function(errCode, spec){
         if (errCode){
             console.log('AN ERROR HAPPENS. ERROR CODE =', errCode);
@@ -234,7 +234,7 @@ JEEPUPILAPI.init({
 
 
 ### Optionnal init arguments
-* `<integer> animateDelay`: It is used only in normal rendering mode (not in slow rendering mode). With this statement you can set accurately the number of milliseconds during which the browser wait at the end of the rendering loop before starting another detection. If you use the canvas of this API as a secondary element (for example in *PACMAN* or *EARTH NAVIGATION* demos) you should set a small `animateDelay` value (for example 2 milliseconds) in order to avoid rendering lags.
+* `<integer> animateDelay`: It is used only in normal rendering mode. With this statement you can set accurately the number of milliseconds during which the browser wait at the end of the rendering loop before starting another detection. If you use the canvas of this API as a secondary element (for example in *PACMAN* or *EARTH NAVIGATION* demos) you should set a small `animateDelay` value (for example 2 milliseconds) in order to avoid rendering lags.
 * `<function> onWebcamAsk`: Function launched just before asking for the user to allow its webcam sharing,
 * `<function> onWebcamGet`: Function launched just after the user has accepted to share its video. It is called with the video element as argument,
 * `<dict> videoSetting`: override WebRTC specified video settings, which are by default :
@@ -292,8 +292,6 @@ After the initialization (ie after that `callbackReady` is launched ) , these me
 * `JEEPUPILAPI.resize()`: should be called after resizing the `<canvas>` element to adapt the cut of the video,
 
 * `JEEPUPILAPI.toggle_pause(<boolean> isPause)`: pause/resume,
-
-* `JEEPUPILAPI.toggle_slow(<boolean> isSlow)`: toggle the slow rendering mode: because this API consumes a lot of GPU resources, it may slow down other elements of the application. If the user opens a CSS menu for example, the CSS transitions and the DOM update can be slow. With this function you can slow down the rendering in order to relieve the GPU. Unfortunately the tracking and the 3D rendering will also be slower but this is not a problem is the user is focusing on other elements of the application. We encourage to enable the slow mode as soon as a the user's attention is focused on a different part of the canvas,
 
 * `JEEPUPILAPI.set_animateDelay(<integer> delay)`: Change the `animateDelay` (see `init()` arguments).
 
