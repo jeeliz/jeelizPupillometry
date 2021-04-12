@@ -104,7 +104,7 @@ var Experiment = (function(){
   const that = {
     init: function(){ // entry point. Called by body onload method
       // initialize Jeeliz pupillometry:
-      JEEPUPILAPI.init({
+      JEELIZPUPILLOMETRY.init({
         canvasId: 'jeePupilCanvas',
         NNCPath: '../../dist/',
         callbackReady: function(err){
@@ -113,7 +113,7 @@ var Experiment = (function(){
               return;
           }
 
-          console.log('INFO: JEEPUPILAPI IS READY');
+          console.log('INFO: JEELIZPUPILLOMETRY IS READY');
         },
         callbackTrack: callbackTrack
       });
