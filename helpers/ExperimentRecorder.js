@@ -163,7 +163,9 @@ var ExperimentRecorder = (function(){
           const slidingWinMedianEcart = slidingWin.map(function(slidingRec){
             return Math.abs(slidingRec.val[key] - medianVal);
           });
-          slidingWinMedianEcart.sort();
+          slidingWinMedianEcart.sort(function(a, b){
+            return a - b;
+          });
           const Sk = slidingWinMedianEcart[halfWindowSize];
 
           // compare the rec value with the median:
