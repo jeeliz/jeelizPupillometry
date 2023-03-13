@@ -104,6 +104,7 @@ You can found a [picture of the mounted camera here](/images/setup/camera.jpg).
 
 
 ### The lighting
+
 The light should be red because the pupils do not contract on red light. A light from below is great because it won't make reflections on the pupil like a direct one, and the eyelids will not make shadows.
 
 * a clip light with a reflector is perfect (Bulb E26, up to 60 Watts, with a 8.5 inch aluminium reflector ). You can [buy it on Amazon here](https://www.amazon.com/Simple-Deluxe-Aluminum-Reflector-Listed/dp/B01E9IY6US),
@@ -112,6 +113,7 @@ The light should be red because the pupils do not contract on red light. A light
 
 
 ### The experimental setup
+
 ![Experimental setup](images/setup/setup.jpg?raw=true "Experimental setup")
 
 The total cost of all this hardware (camera + 1 light) is `(59.99+14.48+6+9.99+5.99)+(8.99+7.04) = $112.48` and most of the hardware is reusable for other projects.
@@ -164,12 +166,13 @@ If you have not bought the required hardware yet, a screenshot video is availabl
 </p>
 
 
-You can also subscribe to the [Jeeliz Youtube channel](https://www.youtube.com/channel/UC3XmXH1T3d1XFyOhrRiiUeA) or to the [@Jeeliz_AR Twitter account](https://twitter.com/Jeeliz_AR) to be kept informed of our cutting edge developments.
+You can also subscribe to the [Jeeliz Youtube channel](https://www.youtube.com/channel/UC3XmXH1T3d1XFyOhrRiiUeA) or to the [@WebARRocks Twitter account](https://twitter.com/WebARRocks) to be kept informed of our cutting edge developments.
 
-If you have developped an application or a demonstration using this library, we would love to see it and add a link here ! Just contact us on [Twitter @Jeeliz_AR](https://twitter.com/Jeeliz_AR) or [LinkedIn](https://www.linkedin.com/company/jeeliz).
+If you have developped an application or a demonstration using this library, we would love to see it and add a link here ! Just contact us on [Twitter @WebARRocks](https://twitter.com/WebARRocks) or [LinkedIn](https://www.linkedin.com/company/jeeliz).
 
 
 ## Sliders usage
+
 In the demonstrations provided with this repository, 4 sliders allows to improve the pupil detection and measurement:
 * **Iris edge border size**: To crop the iris, we first compute the borders using a Sobel filter and a thresholding, then we apply Circle Hough Transform to get the iris position and radius. The edges are displayed in red in the debug view. This slider controls the characteristic distance of the edge detection. If it is too small, the border will be very thin and dashed and the iris detection won't be stable. If it is too thick, the iris detection will be stable but not accurate enough,
 
@@ -186,6 +189,7 @@ First, you have to adjust **Iris edge border size** and **Iris border thresholdi
 ## Experimental results
 
 ### Light intensity
+
 We have measured the dilatation of the pupil over 25 epochs. At each epoch the screen is black during 2000ms, then white during 2000ms. This is the first demonstration, [included in this repository here](/demos/lightIntensity/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/lightIntensity/).
 
 Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 25 epochs. Here is the result for the left and right pupils:
@@ -195,6 +199,7 @@ The pupil dilates (its radius increases) when the luminosity decreases.
 
 
 ### Calm or fear
+
 We have measured the dilatation of the pupil over 5 epochs. At each epoch a quiet, peaceful image (a desert beach, or a beautiful landscape...) is shown during 4000ms, then an image inspiring fear is shown during the same duration (a war or a riot picture for example). This demo is [included in this repository here](/demos/warPeace/) and available [hosted on jeeliz.com here](https://jeeliz.com/demos/pupillometry/demos/warPeace/).
 
 Then we have normalized the pupil radius by its initial value for each epoch. A Hampel filter has been applied to remove outliers. We have averaged the values over the 5 epochs. Here is the result for the left and right pupils:
@@ -205,9 +210,11 @@ This result was previously observed in [Snowden RJ, O’Farrell KR, Burley D, Er
 
 
 ## Specifications
+
 Here we describe how to use this library. You can take a look at the [light intensity demo](/demos/lightIntensity) to have a concrete example.
 
 ### Get started
+
 On your HTML page, you first need to include the main script between the tags `<head>` and `</head>`:
 
 ```html
@@ -326,7 +333,7 @@ If you host the scripts by yourself, be careful to enable gzip HTTP/HTTPS compre
 
 ### Under the hood
 
-This library relies on Jeeliz WebGL Deep Learning technology to detect and track the user's face using a neural network. The accuracy is adaptative: the best is the hardware, the more detections are processed per second. All is done client-side.
+This library relies on WebAR.rocks WebGL Deep Learning technology to detect and track the user's face using a neural network. The accuracy is adaptative: the best is the hardware, the more detections are processed per second. All is done on the client-side.
 
 After the face has been detected, it is tracked using a sliding window. The areas matching the eyes are cut. Then a circle hough transform is applied to detect the iris parameters (radius and position of the center).
 
@@ -352,7 +359,7 @@ If a compatibility error is triggered, please post an issue on this repository. 
 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html). This application is free for both commercial and non-commercial use.
 
-We appreciate attribution by including the [Jeeliz logo](https://jeeliz.com/wp-content/uploads/2018/01/LOGO_JEELIZ_BLUE.png) and a link to the [Jeeliz website](https://jeeliz.com) in your application or desktop website. Of course we do not expect a large link to Jeeliz over your face filter, but if you can put the link in the credits/about/help/footer section it would be great.
+<!--We appreciate attribution by including the [Jeeliz logo](https://jeeliz.com/wp-content/uploads/2018/01/LOGO_JEELIZ_BLUE.png) and a link to the [Jeeliz website](https://jeeliz.com) in your application or desktop website. Of course we do not expect a large link to Jeeliz over your face filter, but if you can put the link in the credits/about/help/footer section it would be great. //-->
 
 
 ## References
